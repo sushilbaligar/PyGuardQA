@@ -1,25 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.pyc
 *.py[cod]
 *$py.class
-*.egg-info/
-.pytest_cache/
-venv/ # Explicitly ignore the virtual environment directory
-
-# Bazel build output and temporary files
-.bazel/
-bazel-bin/
-bazel-genfiles/
-bazel-out/
-bazel-testlogs/
-bazel-pyguardqa/ # Your Bazel output base (specific to your user/workspace)
-.bazelignore
-MODULE.bazel.lock # Keep this if you want Git to ignore Bazel-managed lock file
-WORKSPACE.bak     # Explicitly ignore the old WORKSPACE backup.
-
-# Playwright specific
-test-results/ # Playwright's default test report output
 
 # C extensions
 *.so
@@ -112,12 +94,6 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#uv.lock
-
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
@@ -130,10 +106,8 @@ ipython_config.py
 #pdm.lock
 #   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
 #   in version control.
-#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
+#   https://pdm.fming.dev/#use-with-ide
 .pdm.toml
-.pdm-python
-.pdm-build/
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
@@ -180,33 +154,85 @@ cython_debug/
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+#  be added to the global gitignore or merged into this project gitignore.  For a PyCharm
+#  project, it is generally recommended to include the .idea directory and exclude specific
+#  files within it.
+.idea/
+*.swp
+*.swo
+*~
 
-# Abstra
-# Abstra is an AI-powered process automation framework.
-# Ignore directories containing user credentials, local state, and settings.
-# Learn more at https://abstra.io/docs
-.abstra/
-
-# Visual Studio Code
-#  Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
-#  that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#  and can be added to the global gitignore or merged into this file. However, if you prefer, 
-#  you could uncomment the following to ignore the enitre vscode folder
+# VS Code
 .vscode/
+.history/
 
-# Ruff stuff:
-.ruff_cache/
-
-# PyPI configuration file
-.pypirc
-
-# Cursor
-#  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
-#  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
-#  refer to https://docs.cursor.com/context/ignore-files
+# Cursor AI editor
 .cursorignore
 .cursorindexingignore
+
+# Abstra framework
+.abstra/
+
+# Bazel specific
+bazel-*
+.bazel/
+.bazelrc.local
+.bazelversion
+.bazelignore
+
+# Bazel build outputs and cache
+bazel-bin/
+bazel-genfiles/
+bazel-out/
+bazel-testlogs/
+bazel-pyguardqa/
+
+# Playwright specific
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Ruff cache
+.ruff_cache/
+
+# Screenshots and videos from tests
+screenshots/
+videos/
+test-artifacts/
+
+# Coverage reports
+coverage_html/
+.coverage.*
+lcov.info
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Local configuration files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# PyPI configuration
+.pypirc
+
+# Project specific
+fixtures/temp/
+temp/
