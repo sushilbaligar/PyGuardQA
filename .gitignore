@@ -1,7 +1,25 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*.pyc
 *.py[cod]
 *$py.class
+*.egg-info/
+.pytest_cache/
+venv/ # Explicitly ignore the virtual environment directory
+
+# Bazel build output and temporary files
+.bazel/
+bazel-bin/
+bazel-genfiles/
+bazel-out/
+bazel-testlogs/
+bazel-pyguardqa/ # Your Bazel output base (specific to your user/workspace)
+.bazelignore
+MODULE.bazel.lock # Keep this if you want Git to ignore Bazel-managed lock file
+WORKSPACE.bak     # Explicitly ignore the old WORKSPACE backup.
+
+# Playwright specific
+test-results/ # Playwright's default test report output
 
 # C extensions
 *.so
@@ -178,7 +196,7 @@ cython_debug/
 #  that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
 #  and can be added to the global gitignore or merged into this file. However, if you prefer, 
 #  you could uncomment the following to ignore the enitre vscode folder
-# .vscode/
+.vscode/
 
 # Ruff stuff:
 .ruff_cache/

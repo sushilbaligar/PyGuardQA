@@ -1,18 +1,27 @@
 # MODULE.bazel
 module(
     name = "pyguardqa",
-    version = "0.0.1",
+    version = "0.1.0",
 )
 
-# Rules for Python language support
-bazel_dep(name = "rules_python", version = "0.33.0") # Check for latest stable rules_python
+bazel_dep(name = "rules_python", version = "1.2.0")
+bazel_dep(name = "bazel_skylib", version = "1.7.1")
 
-# Rules for managing Python pip dependencies
-bazel_dep(name = "pip_install", version = "0.0.8") # Check for latest stable pip_install
-
-pip_install = use_extension("@pip_install//:extensions.bzl", "pip_install")
-pip_install.pip_parse(
-    name = "pip",
-    requirements_lock = "//:requirements.txt", # Path to your requirements file
+local_path_override(
+    module_name = "rules_python",
+    path = "C:/Users/sushil/Downloads/rules_python-1.2.0.tar/rules_python-1.2.0",
 )
-use_repo(pip_install, "pip")
+
+python = use_extension("@rules_python//python/private/pypi:extension.bzl", "python")
+python.toolchain(python_version = "3.10")
+
+pypi_ext = use_extension("@rules_python//python/private/pypi:extension.bzl", "pypi")
+pypi_ext.parse(
+    hub_name = "pip",
+    requirements_lock = "//:requirements.txt",
+    python_version = "3.10",
+)
+
+use_repo(python, "python_3_10")
+# This line is crucial for `@pip//...` references to work
+use_repo(pypi_ext, "pip") # <--- Ensure this line is present and correct
