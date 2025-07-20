@@ -1,0 +1,18 @@
+# MODULE.bazel
+module(
+    name = "pyguardqa",
+    version = "0.0.1",
+)
+
+# Rules for Python language support
+bazel_dep(name = "rules_python", version = "0.33.0") # Check for latest stable rules_python
+
+# Rules for managing Python pip dependencies
+bazel_dep(name = "pip_install", version = "0.0.8") # Check for latest stable pip_install
+
+pip_install = use_extension("@pip_install//:extensions.bzl", "pip_install")
+pip_install.pip_parse(
+    name = "pip",
+    requirements_lock = "//:requirements.txt", # Path to your requirements file
+)
+use_repo(pip_install, "pip")
